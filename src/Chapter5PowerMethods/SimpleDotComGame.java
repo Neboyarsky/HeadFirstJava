@@ -9,7 +9,7 @@ public class SimpleDotComGame {
         int[] locations = {randomNum, randomNum+1, randomNum+2};
         theDotCom.setLocationCells(locations);
         boolean isAlive = true;
-        while(isAlive == true) {
+        while(isAlive) {
             String guess = helper.getUserInput("enter a number");
             String result = theDotCom.checkYourself(guess);
             numOfGuesses++;
