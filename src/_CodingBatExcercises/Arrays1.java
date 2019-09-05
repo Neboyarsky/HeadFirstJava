@@ -1,5 +1,7 @@
 package _CodingBatExcercises;
 
+import java.util.Arrays;
+
 public class Arrays1 {
     /**
      * Given an array of ints, return true if 6 appears as either the first
@@ -58,22 +60,64 @@ public class Arrays1 {
     }
 
     /**
-     * PLAYGROUND
+     * We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if
+     * the given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
+     * @param nums
      */
-    public static void main(String[] args) {
-        int[] arr1 = {6, 2, 1};
-        int[] arr2 = {1, 2, 7, 4, 9};
-        int[] arr3 = {2, 8, 3, 18, 20};
-        printArray(midThree(arr1));
-        printArray(midThree(arr2));
-        printArray(midThree(arr3));
+    public static boolean unlucky1(int[] nums) {
+        if (nums.length <= 1) {
+            return false;
+        }
+        else {
+            return ((nums[0] == 1 && nums[1] == 3) || (nums[1] == 1 && nums[2] == 3) || (nums[nums.length - 2] == 1 && nums[nums.length - 1] == 3));
+        }
+
     }
 
-    private static void printArray(int[] array) {
+        private static void printArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
         System.out.println();
+    }
+
+    /**
+     * Given 2 int arrays, a and b, return a new array length 2 containing, as much as will fit,
+     * the elements from a followed by the elements from b. The arrays may be any length, including 0,
+     * but there will be 2 or more elements available between the 2 arrays.
+     * @param a - array of integers
+     * @param b - array of integers
+     * @return
+     */
+    public static int[] make2(int[] a, int[] b) {
+        int[] output = new int[2];
+        if (a.length >=2) {
+            output = Arrays.copyOf(a, 2);
+        }
+        else if (a.length == 1) {
+            output = Arrays.copyOf(a, 2);
+            output[1] = b[0];
+        }
+        else {
+            output = Arrays.copyOf(b, 2);
+        }
+        return output;
+    }
+
+
+
+    /**
+     * PLAYGROUND
+     */
+    public static void main(String[] args) {
+        int[] arr1 = {1};
+        int[] arr2 = {1, 3, 7, 4, 9};
+        int[] arr3 = {3, 1, 3};
+        int[] arr4 = {1, 1, 1, 1, 3};
+        System.out.println(unlucky1(arr1));
+        System.out.println(unlucky1(arr2));
+        System.out.println(unlucky1(arr3));
+        System.out.println(unlucky1(arr4));
     }
 
 }
